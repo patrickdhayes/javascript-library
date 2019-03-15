@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sample Gallery</title>
+    <meta charset="utf-8" />
+    <style>
+	#gallery, #gallery2 {
+	  width: 250px;
+	  padding: 10%;
+	  border: 1px solid #333;
+          overflow: auto;
+/*      display: none;*/
+	}
+        #gallery2 {
+            padding: 15%;   
+        }
+	#img-holder img {
+	  width: 100%;
+      transition: opacity 0.5s;
+/*        display: none;*/
+	}
+        #img-holder {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .highlight {
+            background: yellow;   
+        }
+        .fade {
+            opacity: 0;
+            z-index: 10;
+        }
+        .show {
+            opacity: 1;
+            z-index: 1;
+        }
+        .hide {
+            display: none;   
+        }
+        #ab-pos {
+            position: absolute;
+            left: 350px;
+            top: 500px;
+        }
+        button {
+            background: #0CB065;
+            border: none;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            border-radius: 3px;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <h1>Gallery Heading</h1>
+       <button id="show-gallery">Show Gallery</button>
+      <button id="show-gallery2">Show Gallery 2</button>
+    <div id="gallery" style="display: none;">
+        <div id="img-holder">
+    <!--      <img id="img-fade" src="img/img-1.jpg" alt="Gallery Image" />-->
+          <img id="img" src="img/img-1.jpg" alt="Gallery Image" />
+        </div>
+    <!--        <p>Here is a paragraph!</p>-->
+    
+        <div class="gall">Hello there!</div>
+        <div id="img-thumbs" class="first-one">
+          <ul>
+            <li class="Our Baby"><a href="img/img-1.jpg" >Image 1</a></li>
+            <li class="last"><a href="img/img-2.jpg" >Image 2</a></li>
+          </ul>
+        </div>
+        
+    </div>
+      <div id="gallery2" style="display: none;">
+        <div id="img-holder">
+    <!--      <img id="img-fade" src="img/img-1.jpg" alt="Gallery Image" />-->
+          <img id="img" src="img/img-1.jpg" alt="Gallery Image" />
+        </div>
+    <!--        <p>Here is a paragraph!</p>-->
+    
+        <div class="gall">Hello there!</div>
+        <div id="img-thumbs" class="first-one">
+          <ul>
+            <li class="Our Baby"><a href="img/img-1.jpg" >Image 1</a></li>
+            <li class="last"><a href="img/img-2.jpg" >Image 2</a></li>
+          </ul>
+        </div>
+        
+    </div>
+     <div>
+            <p>this is an absolute positioned item!</p>
+        </div>
+      
+      <script type="text/javascript" src="dome.js" ></script>
+
+      <!--<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>-->
+
+<!--      <script src="combined.tweenLite.Zepto.js" ></script>-->
+    <script>
+	(function(){
+	  var gallery = document.getElementById('gallery');
+	  var imgHolder = document.getElementById('img-holder');
+	  var imgMain = document.getElementById('img');
+      var imgMainFade = document.getElementById('img-fade');
+	  var imgThumbs = document.getElementById('img-thumbs');
+	  var thumbs = imgThumbs.getElementsByTagName('a');
+      
+	  console.log(thumbs);
+      var attrib = $('a').attr('href');
+        console.log('What attrib: ' + attrib);
+//	  function showImage() {
+//          preventDefault();
+        $(thumbs).each(function(index){
+                this.addEventListener('click', function(event){
+                event.preventDefault();
+                imgMain.src = this.href;
+            }, false);
+        });
+//        console.log($('#gallery').getStyle('display'));
+//        console.log('space x: ' + $('#ab-pos').posX());
+//        $('#ab-pos').addY(800);
+//        $('#ab-pos').addX(10);
+        $('#show-gallery').on('click', function() {
+            $('#gallery').slideToggle();
+        });
+        $('#show-gallery2').on('click', function() {
+            $('#gallery2').slideToggle();
+        });
+        
+//       console.log( $('#gallery').width());
+//	    for(var i=0; i < thumbs.length; i++) {
+//              console.log(imgMain.src);
+//		      thumbs[i].addEventListener('click', function(event) {
+//              event.preventDefault();
+//              imgMain.src = this.href;
+//              
+//          }, false);
+//		  
+//	    }
+        
+  
+	})();
+//        var imgH = document.getElementById('img-holder');
+//        var baby = $('.gall').text('It\'s Baby Love here to stay!');
+//        $(imgH).html('<img id="img" src="img/img-2.jpg" alt="Gallery Image" />');
+//        var li = $('li');
+//        var arr = ['baby', 'love'];
+        //arr[0] = 'baby';
+                    var num = 1;
+//        $('li').addClass('Bab');
+//        console.log($('#img-thumbs').tag('li').text('Hello on the other side!'));
+//        $('<img src="img/img-2.jpg" alt="image" />');
+        
+//        var doc = document.documentElement;
+//        console.log($(doc).html());
+       
+//        $('#gallery').remove('#img-thumbs');
+        $('a').each(function(index){
+            $(this).text('Hello ' + index);
+        });
+        
+//        $('div').removeClass('gall');
+//        var babyNew = document.querySelector('.gall');
+//        var test = dom(babyNew);
+//        console.log(baby);
+//        baby.attr('class', 'hello');
+//        baby.text('Hello there!');
+//        baby.prepend(dome.create('span').text('Hello '));
+        
+      </script>
+  </body>
+</html>
+
